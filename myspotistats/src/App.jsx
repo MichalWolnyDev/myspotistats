@@ -5,12 +5,14 @@ import './assets/fonts/stylesheet.css'
 import './index.scss'
 import Dashboard from './pages/Dashboard';
 import { useEffect, useState } from 'react';
-import { accessToken } from './helpers/spotify';
+import { accessToken, chechkAuthLoader, tokenLoader } from './helpers/spotify';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout/>,
+    id: 'root',
+    loader: tokenLoader,
     children: [
       {
         index: true,
@@ -18,7 +20,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <Dashboard />
+        element: <Dashboard />,
+        loader: chechkAuthLoader
       }
     ]
   }

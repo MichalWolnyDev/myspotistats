@@ -1,14 +1,9 @@
 import React from 'react'
 import Container from '../components/UI/Container'
-import Button from '../components/UI/Button'
 import styles from './Home.module.scss'
-import { redirect } from 'react-router-dom'
 
 const Home = () => {
 
-    const loginButtonHandler = () => {
-        window.location.href = 'http://localhost:8080/login';
-    }
 
     return (
         <Container>
@@ -20,11 +15,6 @@ const Home = () => {
                     <p className={styles.home__subtitle}>
                         All Spotify statistics in one place.
                     </p>
-                    <div className={styles.home__cta}>
-                        <Button onClick={loginButtonHandler}>
-                            Login
-                        </Button>
-                    </div>
                 </div>
             </div>
         </Container>

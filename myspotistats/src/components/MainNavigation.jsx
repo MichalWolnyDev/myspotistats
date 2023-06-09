@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from './MainNavigation.module.scss'
 import Container from './UI/Container'
-import { Link, redirect } from 'react-router-dom'
+import { Link, redirect, useRouteLoaderData } from 'react-router-dom'
 import Button from './UI/Button'
 
 const MainNavigation = () => {
+    const token = useRouteLoaderData('root');
 
 
     const loginButtonHandler = () => {
@@ -28,9 +29,9 @@ const MainNavigation = () => {
 
                             </li>
                         </ul> */}
-                        <Button onClick={loginButtonHandler}>
-                            Login
-                        </Button>
+                        {!token && <Button onClick={loginButtonHandler}>
+                            Login with Spotify
+                        </Button>}
                     </div>
                 </nav>
             </Container>
