@@ -1,13 +1,11 @@
 import React from 'react'
 import styles from './MainNavigation.module.scss'
 import Container from './UI/Container'
-import { Link, useNavigate, useRouteLoaderData } from 'react-router-dom'
+import { Link, useRouteLoaderData } from 'react-router-dom'
 import Button from './UI/Button'
 
 const MainNavigation = () => {
     const token = useRouteLoaderData('root');
-    const navigate = useNavigate();
-
 
     const loginButtonHandler = () => {
         window.location.href = 'http://localhost:8080/login';
@@ -19,7 +17,7 @@ const MainNavigation = () => {
         localStorage.removeItem('refreshToken');
         localStorage.removeItem('expiration');
 
-        return navigate('/');
+        window.location.href = '/';
     }
 
     return (
