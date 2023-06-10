@@ -2,7 +2,25 @@ import React, { useEffect, useState } from 'react'
 import styles from './Dashboard.module.scss'
 import Container from '../components/UI/Container'
 import axios from 'axios';
-import { useRouteLoaderData } from 'react-router-dom';
+import { Link, useRouteLoaderData } from 'react-router-dom';
+import Card from '../components/UI/Card';
+
+
+const dashboardMenu = [
+  {
+    title: 'Your profile',
+    link: '/profile'
+  },
+  {
+    title: 'Top artists',
+    link: '/artists'
+  },
+  {
+    title: 'Top tracks',
+    link: '/tracks'
+  }
+]
+
 
 const Dashboard = () => {
   const token = useRouteLoaderData('root');
@@ -22,18 +40,13 @@ const Dashboard = () => {
 
   return (
     <Container>
-      {user.country}
-      <br />
-      {user.display_name}
-      <br />
-      {user.email}
-        <ul>
-          {/* {Object.keys(user).map((u, index) => {
-            return (
-              <li key={index}>{user[u]}</li>
-            )
-          })} */}
-        </ul>
+      <section className={styles.dashboard__menu}>
+        {dashboardMenu.map((item, id) => (
+          <Link to={item.link} key={id}>
+            <Card title={item.title} />
+          </Link>
+        ))}
+      </section>
     </Container>
   )
 }

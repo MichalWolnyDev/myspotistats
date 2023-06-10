@@ -6,6 +6,9 @@ import './index.scss'
 import Dashboard from './pages/Dashboard';
 import { useEffect, useState } from 'react';
 import { accessToken, chechkAuthLoader, tokenLoader } from './helpers/spotify';
+import Profile from './pages/Profile';
+import Artists from './pages/Artists';
+import Tracks from './pages/Tracks';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,21 @@ const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <Dashboard />,
+        loader: chechkAuthLoader
+      },
+      {
+        path: 'profile',
+        element: <Profile />,
+        loader: chechkAuthLoader
+      },
+      {
+        path: 'artists',
+        element: <Artists />,
+        loader: chechkAuthLoader
+      },
+      {
+        path: 'tracks',
+        element: <Tracks />,
         loader: chechkAuthLoader
       }
     ]

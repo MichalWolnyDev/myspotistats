@@ -1,0 +1,22 @@
+.card {
+    border-radius: 20px;
+    border: 1px solid #1DB954;
+    min-width: 100%;
+    min-height: 200px;
+    padding: 2rem;
+    transition: all .3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        -webkit-box-shadow: inset 0px 0px 33px 0px rgba(29, 185, 84, 1);
+        -moz-box-shadow: inset 0px 0px 33px 0px rgba(29, 185, 84, 1);
+        box-shadow: inset 0px 0px 33px 0px rgba(29, 185, 84, 1);
+    }
+
+    @media(min-width: 420px) {
+        min-width: calc(400px - 15px);
+
+    }
+}

@@ -13,7 +13,7 @@ const Home = () => {
                         MySpotiStats
                     </h1>
                     <p className={styles.home__subtitle}>
-                        All Spotify statistics in one place.
+                        All your Spotify statistics in one place.
                     </p>
                 </div>
             </div>
