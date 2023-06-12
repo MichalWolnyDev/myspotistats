@@ -8,7 +8,10 @@
     transition: all .3s ease-in-out;
     font-weight: 600;
 
-    &:hover{
+    &:hover {
+        background: $spotigreen;
+    }
+    &.active{
         background: $spotigreen;
     }
 }

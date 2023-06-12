@@ -5,6 +5,7 @@ const useAxios = axiosParams => {
     const [response, setResponse] = useState(null);
     const [error, setError] = useState('')
     const [loading, setIsLoading] = useState(true);
+    const [shouldRefetch, refetch] = useState({}); 
 
     const sendRequest = async params => {
         try {
@@ -22,12 +23,13 @@ const useAxios = axiosParams => {
 
     useEffect(() => {
         sendRequest(axiosParams)
-    }, [])
+    }, [shouldRefetch])
 
     return {
         response,
         error,
-        loading
+        loading,
+        refetch
     }
 }
 

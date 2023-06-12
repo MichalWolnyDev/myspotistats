@@ -46,16 +46,12 @@ const router = createBrowserRouter([
 ])
 
 
-
 function App() {
-  const [token, setToken] = useState();
-
-  useEffect(() => {
-    setToken(accessToken)
-  }, []);
 
   return (
-    <RouterProvider router={router}/>
+    <>
+      <RouterProvider router={router}/>
+    </>
   )
 }
 
