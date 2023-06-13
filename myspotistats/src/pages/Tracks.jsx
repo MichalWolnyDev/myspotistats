@@ -1,9 +1,50 @@
-import React from 'react'
+import React, { useState } from "react";
+import Container from "../components/UI/Container";
+import useAxios from "../hooks/use-axios";
+import { useRouteLoaderData } from "react-router-dom";
+import styles from "./Tracks.module.scss";
+import Listing from "../components/UI/Listing";
 
 const Tracks = () => {
-  return (
-    <div>Tracks</div>
-  )
-}
+  const token = useRouteLoaderData("root");
+  const [timeRange, setTimeRange] = useState("long_term");
 
-export default Tracks
+  const {
+    response: track,
+    error,
+    loading,
+    refetch,
+  } = useAxios({
+    method: "GET",
+    url: `https://api.spotify.com/v1/me/top/tracks`,
+    params: {
+      time_range: timeRange,
+    },
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+
+  const items = track?.data.items;
+
+  console.log(items);
+
+  const menuButtonHandler = (param) => {
+    setTimeRange(param);
+    refetch({}); //refetch axios data
+  };
+
+  return (
+    <Container>
+      <Listing
+        type={"tracks"}
+        data={items}
+        menuButtonHandler={menuButtonHandler}
+        timeRange={timeRange}
+        loading={loading}
+      />
+    </Container>
+  );
+};
+
+export default Tracks;
