@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Listing.module.scss";
 import Button from "./Button";
+import TrackDetails from "../TrackDetails";
 
 const MENU = [
   {
@@ -18,6 +19,14 @@ const MENU = [
 ];
 
 const Listing = ({ data, menuButtonHandler, timeRange, loading, type }) => {
+  const [showDetails, setShowDetails] = useState(null);
+
+  const showDetailsHandler = index => {
+    setShowDetails(prev => {
+      return prev === index ? null : index;
+    })
+  }
+
   return (
     <div className={styles.listing}>
       <div className={styles.listing__menu}>
@@ -25,7 +34,10 @@ const Listing = ({ data, menuButtonHandler, timeRange, loading, type }) => {
           <Button
             className={item.param === timeRange ? "active" : ""}
             key={id}
-            onClick={() => menuButtonHandler(item.param)}
+            onClick={() => {
+              menuButtonHandler(item.param);
+              setShowDetails(null)
+            }}
           >
             {item.text}
           </Button>
@@ -37,31 +49,38 @@ const Listing = ({ data, menuButtonHandler, timeRange, loading, type }) => {
           data &&
           data.map((item, id) => (
             <div key={id} className={styles.listing__item}>
-              <div className={styles.listing__number}>
-                <p>{id + 1}</p>
+              <div className={styles.listing__row}>
+                <div className={styles.listing__number}>
+                  <p>{id + 1}</p>
+                </div>
+                <div className={styles.listing__image}>
+                  {type == "artists" && (
+                    <img src={item.images[0]?.url} alt={item.name} />
+                  )}
+                  {type == "tracks" && (
+                    <img src={item.album.images[0]?.url} alt={item.album.name} />
+                  )}
+                </div>
+                <div className={styles.listing__details}>
+                  {type == "tracks" && (
+                    <p>{item.artists.map((artist) => artist.name + " ")}</p>
+                  )}
+                  <h1 className={styles.listing__name}>{item.name}</h1>
+                  {type == "tracks" && (
+                    <div className={styles.listing__cta}>
+                      <div className={styles['listing__cta-row']}>
+                        <a href={item.external_urls.spotify} target="_blank">
+                          <Button>Listen on Spotify</Button>
+                        </a>
+                      </div>
+                      <div className={styles['listing__cta-row']}>
+                        <Button onClick={() => showDetailsHandler(id)}>{showDetails === id ? 'Hide details' : 'Show details'}</Button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className={styles.listing__image}>
-                {type == "artists" && (
-                  <img src={item.images[0]?.url} alt={item.name} />
-                )}
-                {type == "tracks" && (
-                  <img src={item.album.images[0]?.url} alt={item.album.name} />
-                )}
-              </div>
-              <div className={styles.listing__details}>
-                {type == "tracks" && (
-                  <p>{item.artists.map((artist) => artist.name + " ")}</p>
-                )}
-                <h1 className={styles.listing__name}>{item.name}</h1>
-                {type == "tracks" && (
-                  <>
-                    <br />
-                    <a href={item.external_urls.spotify} target="_blank">
-                      <Button>Listen on Spotify</Button>
-                    </a>
-                  </>
-                )}
-              </div>
+              {showDetails === id && <TrackDetails item={item} />}
             </div>
           ))}
       </div>

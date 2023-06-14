@@ -1,4 +1,8 @@
 .listing{
+    &__item {
+        margin-bottom: 60px;
+
+    }
     &__menu {
         display: flex;
         align-items: center;
@@ -10,14 +14,19 @@
             flex-direction: column;
         }
     }
-    &__item{
+    &__row{
         display: flex;
         align-items: center;
-        margin-bottom: 60px;
 
         @media(max-width: 575px){
             flex-direction: column;
         }
+    }
+
+    &__cta{
+        display: flex;
+        margin: 20px 0 0;
+        gap: 20px;
     }
 
     &__number{
