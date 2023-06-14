@@ -6,10 +6,11 @@ const getAccessToken = () => {
     const accessToken = urlParams.get('access_token');
     const refreshToken = urlParams.get('refresh_token');
     const expiration = urlParams.get('expires_in');
+    const now = new Date();
 
-    accessToken !== null && localStorage.setItem('accessToken', accessToken);
+    accessToken !== null && localStorage.setItem('accessToken', accessToken)
     refreshToken !== null && localStorage.setItem('refreshToken', refreshToken);
-    expiration !== null && localStorage.setItem('expiration', expiration);
+    expiration !== null && localStorage.setItem('expiration', now.getTime() + expiration * 1000);
 
     return {
         accessToken: accessToken,
@@ -20,28 +21,35 @@ const getAccessToken = () => {
 
 export const accessToken = getAccessToken();
 
-export const getTokenDuration = () => {
+export const isTokenExpired = () => {
     const storedExpirationTime = localStorage.getItem('expiration');
     const now = new Date();
-    const duration = Math.round(now.getTime() / 1000); - storedExpirationTime
 
-    return duration
+    // let temp = new Date(Number(storedExpirationTime))
+    // console.log('czas wygasniecia: ' + temp)
+    // console.log(now + " " + now.getTime())
 
+    if(now.getTime() > Number(storedExpirationTime)){
+        return true; // token expired
+    }
+
+    return false;
 }
 
 export const getAuthToken = () => {
     const token = localStorage.getItem('accessToken');
+    const refresh_token = localStorage.getItem('refreshToken')
 
     if(!token){
         return null;
     }
 
-    const tokenDuration = getTokenDuration();
-    console.log(tokenDuration)
+    const tokenExpired = isTokenExpired();
+    // console.log('istokenexpired: ' + tokenExpired)
 
 
-    if(tokenDuration < 0){
-        return 'Expired';
+    if(tokenExpired){
+        window.location.href = `http://localhost:8080/login?refresh_token=${refresh_token}`
     }
 
     return token;

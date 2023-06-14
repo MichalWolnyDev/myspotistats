@@ -101,6 +101,7 @@ app.get('/callback', (req, res) => {
 
 app.get('/refresh_token', (req, res) => {
     const { refresh_token } = req.query;
+    console.log('wbilem na refresh');
   
     axios({
       method: 'post',
@@ -115,7 +116,21 @@ app.get('/refresh_token', (req, res) => {
       },
     })
       .then(response => {
-        res.send(response.data);
+        if (response.status === 200) {
+          const { access_token, refresh_token, expires_in } = response.data;
+  
+          const queryParams = querystring.stringify({
+            access_token,
+            refresh_token,
+            expires_in
+          });
+  
+          res.redirect(`http://localhost:5173/dashboard?${queryParams}`);
+  
+        } else {
+          res.redirect(`/?${querystring.stringify({ error: 'invalid_token' })}`);
+        }
+
       })
       .catch(error => {
         res.send(error);

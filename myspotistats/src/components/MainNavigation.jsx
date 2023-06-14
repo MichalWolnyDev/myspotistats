@@ -3,7 +3,7 @@ import styles from "./MainNavigation.module.scss";
 import Container from "./UI/Container";
 import { Link, useRouteLoaderData } from "react-router-dom";
 import Button from "./UI/Button";
-import CurrentlyPlaying from "./CurrentlyPlaying";
+// import CurrentlyPlaying from "./CurrentlyPlaying";
 
 const MainNavigation = () => {
   const token = useRouteLoaderData("root");
@@ -30,7 +30,7 @@ const MainNavigation = () => {
               <h1>MySpotiStats</h1>
             </div>
           </Link>
-          <CurrentlyPlaying token={token}/>
+          {/* <CurrentlyPlaying token={token}/> */}
 
           <div className={styles.nav__menu}>
             {!token && (
