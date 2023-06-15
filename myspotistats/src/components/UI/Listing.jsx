@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Listing.module.scss";
 import Button from "./Button";
 import TrackDetails from "../TrackDetails";
+import Loader from "../Loader";
 
 const MENU = [
   {
@@ -44,7 +45,7 @@ const Listing = ({ data, menuButtonHandler, timeRange, loading, type }) => {
         ))}
       </div>
       <div className={styles.listing__wrap}>
-        {loading && <p>loading...</p>}
+        {loading && <Loader />}
         {!loading &&
           data &&
           data.map((item, id) => (

@@ -3,6 +3,7 @@ import { useRouteLoaderData } from 'react-router-dom';
 import styles from './Profile.module.scss';
 import Container from '../components/UI/Container';
 import useAxios from '../hooks/use-axios';
+import Loader from '../components/Loader';
 
 const Profile = () => {
     const token = useRouteLoaderData('root');
@@ -21,7 +22,7 @@ const Profile = () => {
         <Container>
             <section>
                 {error && <p>{error}</p>}
-                {loading ? <p>loading...</p> : (
+                {loading ? <Loader /> : (
                     <div className={styles.profile}>
                         <div className={styles.profile__header}>
                             <h1 className={styles.profile__name}>

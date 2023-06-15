@@ -14,4 +14,9 @@
     &.active{
         background: $spotigreen;
     }
+    &.mode {
+        &__white{
+            border: 2px solid $white;
+        }
+    }
 }
