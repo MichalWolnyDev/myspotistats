@@ -29,7 +29,7 @@ export const isTokenExpired = () => {
     // console.log('czas wygasniecia: ' + temp)
     // console.log(now + " " + now.getTime())
 
-    if(now.getTime() > Number(storedExpirationTime)){
+    if (now.getTime() > Number(storedExpirationTime)) {
         return true; // token expired
     }
 
@@ -40,7 +40,7 @@ export const getAuthToken = () => {
     const token = localStorage.getItem('accessToken');
     const refresh_token = localStorage.getItem('refreshToken')
 
-    if(!token){
+    if (!token) {
         return null;
     }
 
@@ -48,7 +48,7 @@ export const getAuthToken = () => {
     // console.log('istokenexpired: ' + tokenExpired)
 
 
-    if(tokenExpired){
+    if (tokenExpired) {
         window.location.href = `http://localhost:8080/login?refresh_token=${refresh_token}`
     }
 
@@ -62,7 +62,7 @@ export const tokenLoader = () => {
 export const chechkAuthLoader = () => {
     const token = getAuthToken();
 
-    if(token === null){
+    if (token === null) {
         return redirect('/');
     }
 

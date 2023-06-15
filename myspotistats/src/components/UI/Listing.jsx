@@ -69,6 +69,7 @@ const Listing = ({ data, menuButtonHandler, timeRange, loading, type }) => {
                     <p>{item.artists.map((artist) => artist.name + " ")}</p>
                   )}
                   <h1 className={styles.listing__name}>{item.name}</h1>
+                  
                   {type == "tracks" && (
                     <div className={styles.listing__cta}>
                       <div className={styles['listing__cta-row']}>

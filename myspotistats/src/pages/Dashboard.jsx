@@ -17,6 +17,10 @@ const dashboardMenu = [
   {
     title: 'Top tracks',
     link: '/tracks'
+  },
+  {
+    title: 'Your playlists',
+    link: '/playlists'
   }
 ]
 

@@ -27,26 +27,6 @@ const Artists = () => {
 
   const items = artist?.data.items;
 
-  // const artistIds = items?.map((item) => item.id);
-
-  // const {
-  //   response: following,
-  //   error: followingError,
-  //   loading: followingLoader,
-  //   refetch: followingRefetch,
-  // } = useAxios({
-  //   method: "GET",
-  //   url: `https://api.spotify.com/v1/me/following/contains`,
-  //   params: {
-  //     type: "artist",
-  //     ids: artistIds?.toString(),
-  //   },
-  //   headers: {
-  //     Authorization: "Bearer " + token,
-  //   },
-  // });
-
-
   const menuButtonHandler = (param) => {
     setTimeRange(param);
     refetch({}); //refetch axios data

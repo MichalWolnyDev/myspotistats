@@ -4,11 +4,11 @@ import Home from './pages/Home';
 import './assets/fonts/stylesheet.css'
 import './index.scss'
 import Dashboard from './pages/Dashboard';
-import { useEffect, useState } from 'react';
 import { accessToken, chechkAuthLoader, tokenLoader } from './helpers/spotify';
 import Profile from './pages/Profile';
 import Artists from './pages/Artists';
 import Tracks from './pages/Tracks';
+import Playlists from './pages/Playlists';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +39,11 @@ const router = createBrowserRouter([
       {
         path: 'tracks',
         element: <Tracks />,
+        loader: chechkAuthLoader
+      },
+      {
+        path: 'playlists',
+        element: <Playlists />,
         loader: chechkAuthLoader
       }
     ]
