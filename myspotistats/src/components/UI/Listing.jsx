@@ -28,6 +28,8 @@ const Listing = ({ data, menuButtonHandler, timeRange, loading, type }) => {
     })
   }
 
+  console.log(data)
+
   return (
     <div className={styles.listing}>
       <div className={styles.listing__menu}>

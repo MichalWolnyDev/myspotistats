@@ -24,7 +24,7 @@ const TrackDetails = ({ item }) => {
             <h4>Artists</h4>
             <br />
             {item.artists.map(artist => (
-                <a href={artist.external_urls.spotify} target="_blank">
+                <a key={artist.id} href={artist.external_urls.spotify} target="_blank">
                     <p>
                         {artist.name}
                     </p>

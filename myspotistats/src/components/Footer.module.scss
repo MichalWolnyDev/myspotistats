@@ -8,4 +8,9 @@
         color: $gray;
 
     }
+
+    &__row{
+        display: flex;
+        justify-content: space-between;
+    }
 }

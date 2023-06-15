@@ -10,8 +10,8 @@ const useAxios = axiosParams => {
     const sendRequest = async params => {
         try {
             const res = await axios.request(params)
-
             setResponse(res);
+            
         }
         catch (err) {
             setError(err)
