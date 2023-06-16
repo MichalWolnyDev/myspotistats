@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
 const useAxios = axiosParams => {
@@ -7,7 +7,7 @@ const useAxios = axiosParams => {
     const [loading, setIsLoading] = useState(true);
     const [shouldRefetch, refetch] = useState({}); 
 
-    const sendRequest = async params => {
+    const sendRequest = useCallback(async params => {
         try {
             const res = await axios.request(params)
             setResponse(res);
@@ -19,7 +19,7 @@ const useAxios = axiosParams => {
             setIsLoading(false)
         }
 
-    }
+    }, [])
 
     useEffect(() => {
         sendRequest(axiosParams)
