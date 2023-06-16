@@ -44,6 +44,8 @@ const Dashboard = () => {
 
   const userPayload = user?.data;
 
+  localStorage.setItem('userId', userPayload?.id);
+
   useEffect(() => {
     dispatch(profileActions.setProfile(userPayload))
   }, [userPayload])
