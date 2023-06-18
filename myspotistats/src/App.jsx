@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import "./assets/fonts/stylesheet.css";
 import "./index.scss";
 import { accessToken, chechkAuthLoader, tokenLoader } from "./helpers/spotify";
-import Loader from "./components/Loader";
+import Loader from "./components/UI/Loader";
 
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));

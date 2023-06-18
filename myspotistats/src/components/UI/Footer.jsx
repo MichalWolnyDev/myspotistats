@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "./UI/Container";
+import Container from "./Container";
 
 import styles from "./Footer.module.scss";
-import GithubLogo from "./Svg/GithubLogo";
+import GithubLogo from "../Svg/GithubLogo";
 
 const Footer = () => {
   return (

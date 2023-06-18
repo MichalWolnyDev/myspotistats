@@ -1,25 +1,10 @@
 import React, { useState } from "react";
 import styles from "./Listing.module.scss";
-import Button from "./Button";
-import TrackDetails from "../TrackDetails";
-import Loader from "../Loader";
+import Button from "./UI/Button";
+import TrackDetails from "./TrackDetails";
+import Loader from "./UI/Loader";
 
-const MENU = [
-  {
-    text: "Last 4 weeks",
-    param: "short_term",
-  },
-  {
-    text: "Last 6 months",
-    param: "medium_term",
-  },
-  {
-    text: "All time",
-    param: "long_term",
-  },
-];
-
-const Listing = ({ data, menuButtonHandler, timeRange, loading, type }) => {
+const Listing = ({ data, loading, type }) => {
   const [showDetails, setShowDetails] = useState(null);
 
   const showDetailsHandler = index => {
@@ -28,24 +13,15 @@ const Listing = ({ data, menuButtonHandler, timeRange, loading, type }) => {
     })
   }
 
-  console.log(data)
+  let playListData = [];
+
+  if (type == "playlist") {
+    playListData = data?.map(item => item.track);
+    data = playListData;
+  }
 
   return (
     <div className={styles.listing}>
-      <div className={styles.listing__menu}>
-        {MENU?.map((item, id) => (
-          <Button
-            className={item.param === timeRange ? "active" : ""}
-            key={id}
-            onClick={() => {
-              menuButtonHandler(item.param);
-              setShowDetails(null)
-            }}
-          >
-            {item.text}
-          </Button>
-        ))}
-      </div>
       <div className={styles.listing__wrap}>
         {loading && <Loader />}
         {!loading &&
@@ -60,17 +36,17 @@ const Listing = ({ data, menuButtonHandler, timeRange, loading, type }) => {
                   {type == "artists" && (
                     <img src={item.images[0]?.url} alt={item.name} />
                   )}
-                  {type == "tracks" && (
+                  {(type == "tracks" || type == "playlist") && (
                     <img src={item.album.images[0]?.url} alt={item.album.name} />
                   )}
                 </div>
                 <div className={styles.listing__details}>
-                  {type == "tracks" && (
+                  {type == "tracks" || type == "playlist" && (
                     <p>{item.artists.map((artist) => artist.name + " ")}</p>
                   )}
                   <h1 className={styles.listing__name}>{item.name}</h1>
-                  
-                  {type == "tracks" && (
+
+                  {(type == "tracks" || type == "playlist") && (
                     <div className={styles.listing__cta}>
                       <div className={styles['listing__cta-row']}>
                         <a href={item.external_urls.spotify} target="_blank">

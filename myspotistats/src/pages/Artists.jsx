@@ -3,7 +3,8 @@ import Container from "../components/UI/Container";
 import useAxios from "../hooks/use-axios";
 import { useRouteLoaderData } from "react-router-dom";
 import styles from "./Artists.module.scss";
-import Listing from "../components/UI/Listing";
+import Listing from "../components/Listing";
+import ListingMenu from "../components/ListingMenu";
 
 const Artists = () => {
   const token = useRouteLoaderData("root");
@@ -34,11 +35,12 @@ const Artists = () => {
 
   return (
     <Container>
+      <ListingMenu
+        menuButtonHandler={menuButtonHandler}
+        timeRange={timeRange} />
       <Listing
         type={"artists"}
         data={items}
-        menuButtonHandler={menuButtonHandler}
-        timeRange={timeRange}
         loading={loading}
       />
     </Container>
