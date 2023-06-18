@@ -5,6 +5,7 @@ import useAxios from "../hooks/use-axios";
 import Container from "../components/UI/Container";
 import Listing from "../components/Listing";
 import styles from './Playlists.module.scss'
+import GoBack from "../components/GoBack";
 
 const PlaylistDetails = () => {
   const token = useRouteLoaderData('root');
@@ -24,6 +25,7 @@ const PlaylistDetails = () => {
 
   return (
     <Container>
+      <GoBack />
       <div className={styles.playlist}>
         <div className={styles.playlist__header}>
           <h1>

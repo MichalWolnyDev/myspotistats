@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Profile.module.scss";
 import Container from "../components/UI/Container";
 import { useSelector } from "react-redux";
+import GoBack from "../components/GoBack";
 
 const Profile = () => {
   const user = useSelector((state) => state.profile.profile);
@@ -9,6 +10,7 @@ const Profile = () => {
   return (
     <Container>
       <section>
+        <GoBack />
         <div className={styles.profile}>
           <div className={styles.profile__header}>
             <h1 className={styles.profile__name}>

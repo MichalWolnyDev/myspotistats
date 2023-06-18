@@ -5,6 +5,7 @@ import { useRouteLoaderData } from "react-router-dom";
 import styles from "./Tracks.module.scss";
 import Listing from "../components/Listing";
 import ListingMenu from "../components/ListingMenu";
+import GoBack from "../components/GoBack";
 
 const Tracks = () => {
   const token = useRouteLoaderData("root");
@@ -37,6 +38,7 @@ const Tracks = () => {
 
   return (
     <Container>
+      <GoBack />
       <ListingMenu
         menuButtonHandler={menuButtonHandler}
         timeRange={timeRange} />

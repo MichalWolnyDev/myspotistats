@@ -4,6 +4,7 @@ import { Link, useRouteLoaderData } from "react-router-dom";
 import axios from "axios";
 import styles from './Playlists.module.scss'
 import Loader from "../components/UI/Loader";
+import GoBack from "../components/GoBack";
 
 const Playlists = () => {
   const token = useRouteLoaderData("root");
@@ -33,6 +34,7 @@ const Playlists = () => {
   }, [id, token]);
 
   return <Container>
+    <GoBack />
     <div className={styles.playlist}>
       <div className={styles.playlist__header}>
         <h1>
