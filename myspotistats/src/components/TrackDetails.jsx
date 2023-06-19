@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./TrackDetails.module.scss";
 import Button from "./UI/Button";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 
 const TrackDetails = ({ item }) => {
   console.log(item);
@@ -12,7 +14,11 @@ const TrackDetails = ({ item }) => {
         <div className={styles["details__album-row"]}>
           <div className={styles["details__album-cover"]}>
             <a href={item.album.external_urls.spotify} target="_blank">
-              <img src={item?.album.images[1].url} alt={item.album.name} />
+              <LazyLoadImage
+                src={item?.album.images[1].url}
+                alt={item.album.name}
+                effect="opacity"
+              />
             </a>
           </div>
           <div className={styles["details__album-info"]}>
@@ -23,24 +29,26 @@ const TrackDetails = ({ item }) => {
             <br />
             <h4>Artists</h4>
             <br />
-            {item.artists.map(artist => (
-                <a key={artist.id} href={artist.external_urls.spotify} target="_blank">
-                    <p>
-                        {artist.name}
-                    </p>
-                </a>
+            {item.artists.map((artist) => (
+              <a
+                key={artist.id}
+                href={artist.external_urls.spotify}
+                target="_blank"
+              >
+                <p>{artist.name}</p>
+              </a>
             ))}
             <br />
             <a href={item.album.external_urls.spotify} target="_blank">
-              <Button mode='white'>Check this album on Spotify</Button>
+              <Button mode="white">Check this album on Spotify</Button>
             </a>
           </div>
         </div>
         <div className={styles.details__artists}></div>
       </div>
       <div className={styles.details__demo}>
-      <h3 className={styles.details__title}>Demo</h3>
-      <br />
+        <h3 className={styles.details__title}>Demo</h3>
+        <br />
         <audio
           className={styles.details__player}
           src={item.preview_url}
