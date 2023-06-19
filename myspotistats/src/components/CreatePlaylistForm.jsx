@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import useInput from "../hooks/use-input";
+import Checkbox from "./UI/Checkbox";
 import styles from "./Form.module.scss"
 
 const isNotEmpty = (value) => value.trim() !== "";
@@ -22,6 +23,8 @@ const CreatePlaylistForm = () => {
     reset: resetDescription,
   } = useInput(isNotEmpty);
 
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
+
   let formIsValid = false;
 
   if(enteredNameIsValid){
@@ -36,6 +39,12 @@ const CreatePlaylistForm = () => {
     }
 
     resetName();
+  }
+
+  const checkboxChangeHandler = () => {
+    setCheckboxChecked(prevState => !prevState)
+
+    console.log(checkboxChecked)
   }
 
   return (
@@ -61,6 +70,9 @@ const CreatePlaylistForm = () => {
           onBlur={enteredDescriptionBlurHandler}
         />
         {enteredDescriptionHasError && <p className={styles.form__error}>Description must not be empty</p>}
+      </div>
+      <div>
+        <Checkbox label={"Make playlist public:"} value={checkboxChecked} id={'accessibility'} onChange={checkboxChangeHandler}/>
       </div>
       <div className={styles.form__actions}>
         <button disabled={!formIsValid}>
