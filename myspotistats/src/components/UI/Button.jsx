@@ -1,18 +1,24 @@
-import React from 'react'
-import styles from '../../assets/scss/UI/Button.module.scss'
+import React from "react";
+import styles from "../../assets/scss/UI/Button.module.scss";
 
-console.log(styles)
+console.log(styles);
 
-const Button = props => {
+const Button = (props) => {
   return (
     <button
-        className={`${styles.button} ${props.className ? styles.active : ''} ${props.mode ? styles[`mode__${props.mode}`] : ''}`}
-        type={props.type || 'button'}
-        onClick={props.onClick}
+      className={
+        `
+        ${styles.button} ${props.className ? styles.active : ""} 
+        ${props.mode ? styles[`mode__${props.mode}`] : ""}
+        ${props.disabled ? styles.disabled : ""}
+        `}
+      type={props.type || "button"}
+      onClick={props.onClick}
+      disabled={props.disabled}
     >
-        {props.children}
+      {props.children}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
