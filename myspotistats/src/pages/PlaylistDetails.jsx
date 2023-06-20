@@ -1,14 +1,14 @@
 import React from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { useRouteLoaderData } from "react-router-dom";
 import useAxios from "../hooks/use-axios";
 import Container from "../components/UI/Container";
 import Listing from "../components/Listing";
 import styles from '../assets/scss/Playlists.module.scss'
 import GoBack from "../components/GoBack";
+import { getAuthToken } from "../helpers/spotify";
 
 const PlaylistDetails = () => {
-  const token = useRouteLoaderData('root');
+  const token = getAuthToken();
   const { id } = useParams();
   let { state } = useLocation();
 

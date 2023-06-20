@@ -3,10 +3,10 @@ import styles from '../assets/scss/Dashboard.module.scss'
 import Container from '../components/UI/Container'
 import { Link } from 'react-router-dom';
 import Card from '../components/UI/Card';
-import { useRouteLoaderData } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { profileActions } from '../store/profile';
 import useAxios from '../hooks/use-axios';
+import { getAuthToken } from "../helpers/spotify";
 
 
 const dashboardMenu = [
@@ -31,7 +31,7 @@ const dashboardMenu = [
 
 const Dashboard = () => {
 
-  const token = useRouteLoaderData('root');
+  const token = getAuthToken();
   const dispatch = useDispatch();
 
   const { response: user, error, loading } = useAxios({

@@ -1,8 +1,11 @@
 import React from "react";
 import styles from "../assets/scss/components/CurrentlyPlaying.module.scss";
 import useAxios from "../hooks/use-axios";
+import { getAuthToken } from "../helpers/spotify";
 
-const CurrentlyPlaying = props => {
+const CurrentlyPlaying = () => {
+  const token = getAuthToken();
+
   const {
     response: currentlyPlaying,
     error,
@@ -12,7 +15,7 @@ const CurrentlyPlaying = props => {
     method: "GET",
     url: `https://api.spotify.com/v1/me/player/currently-playing`,
     headers: {
-      Authorization: "Bearer " + props.token,
+      Authorization: "Bearer " + token,
     },
   });
 
@@ -21,7 +24,7 @@ const CurrentlyPlaying = props => {
   return <>
     {song && <div className={styles.player}>
         <p className={styles.player__title}>
-            Currently playing:
+            Recently played:
         </p>
         <div className={styles.player__wrap}>
             <div className={styles.player__album}>

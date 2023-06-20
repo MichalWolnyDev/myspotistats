@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Container from "../components/UI/Container";
-import { Link, useRouteLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from '../assets/scss/Playlists.module.scss'
 import Loader from "../components/UI/Loader";
@@ -8,9 +8,10 @@ import GoBack from "../components/GoBack";
 import Button from '../components/UI/Button'
 import Modal from "../components/UI/Modal";
 import CreatePlaylistForm from "../components/CreatePlaylistForm";
+import { getAuthToken } from "../helpers/spotify";
 
 const Playlists = () => {
-  const token = useRouteLoaderData("root");
+  const token = getAuthToken();
   const id = localStorage.getItem('userId')
   const [playlists, setPlaylists] = useState([]);
   const [showForm, setShowForm] = useState(false);

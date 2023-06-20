@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "../assets/scss/components/MainNavigation.module.scss";
 import Container from "./UI/Container";
-import { Link, useRouteLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "./UI/Button";
 // import CurrentlyPlaying from "./CurrentlyPlaying";
+import { getAuthToken } from "../helpers/spotify";
 
 const MainNavigation = () => {
-  const token = useRouteLoaderData("root");
+  const token = getAuthToken();
 
   const loginButtonHandler = () => {
     window.location.href = "http://localhost:8080/login";
@@ -30,7 +31,7 @@ const MainNavigation = () => {
               <h1>MySpotiStats</h1>
             </div>
           </Link>
-          {/* <CurrentlyPlaying token={token}/> */}
+          {/* <CurrentlyPlaying /> */}
 
           <div className={styles.nav__menu}>
             {!token && (

@@ -2,11 +2,44 @@ import React, { useState } from "react";
 import useInput from "../hooks/use-input";
 import Checkbox from "./UI/Checkbox";
 import styles from "../assets/scss/components/Form.module.scss";
-import Button from './UI/Button'
+import Button from "./UI/Button";
+import axios from "axios";
+import { getAuthToken } from "../helpers/spotify";
 
 const isNotEmpty = (value) => value.trim() !== "";
 
+const sendPlaylist = async (formData) => {
+  const token = getAuthToken();
+
+  const response = await axios
+    .post(
+      `https://api.spotify.com/v1/users/${formData.userId}/playlists`,
+      {
+        name: formData.name,
+        description: formData.description,
+        public: formData.public,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      }
+    )
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return response;
+};
+
 const CreatePlaylistForm = () => {
+  const userId = localStorage.getItem("userId");
+  const [isPlaylistAdded, setIsPlaylistAdded] = useState(false);
+
   const {
     value: enteredName,
     isValid: enteredNameIsValid,
@@ -38,9 +71,17 @@ const CreatePlaylistForm = () => {
     if (!formIsValid) {
       return;
     }
-    console.log('nowa playlista')
 
-    resetName();
+    sendPlaylist({
+      name: enteredName,
+      description: enteredDescription,
+      public: checkboxChecked,
+      userId: userId,
+    }).then((res)=> {
+      setIsPlaylistAdded(true)
+    });
+
+    // resetName();
   };
 
   const checkboxChangeHandler = () => {
@@ -50,7 +91,9 @@ const CreatePlaylistForm = () => {
   };
 
   return (
-    <form>
+    <>
+      {!isPlaylistAdded && (
+      <form onSubmit={formSubmission}>
       <div>
         <label htmlFor="name">Playlist name</label>
         <br />
@@ -77,9 +120,6 @@ const CreatePlaylistForm = () => {
           onChange={enteredDescriptionHandler}
           onBlur={enteredDescriptionBlurHandler}
         />
-        {/* {enteredDescriptionHasError && (
-          <p className={styles.form__error}>Description must not be empty</p>
-        )} */}
       </div>
       <div>
         <Checkbox
@@ -90,11 +130,14 @@ const CreatePlaylistForm = () => {
         />
       </div>
       <div className={styles.form__actions}>
-        <Button mode="white" disabled={!formIsValid} onClick={formSubmission}>
+        <Button mode="white" disabled={!formIsValid} type="submit">
           Submit
         </Button>
       </div>
     </form>
+    )}
+    {isPlaylistAdded && <p className={styles.form__message}>Playlist {enteredName} has been added!</p>}
+    </>
   );
 };
 
