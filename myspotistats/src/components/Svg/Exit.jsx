@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Exit.module.scss";
+import styles from "../../assets/scss/svg/Exit.module.scss";
 
 const Exit = () => {
   return (

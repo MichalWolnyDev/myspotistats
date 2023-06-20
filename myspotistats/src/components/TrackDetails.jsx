@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./TrackDetails.module.scss";
+import styles from "../assets/scss/components/TrackDetails.module.scss";
 import Button from "./UI/Button";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";

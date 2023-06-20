@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./GithubLogo.module.scss";
+import styles from "../../assets/scss/svg/GithubLogo.module.scss";
 
 const GithubLogo = () => {
   return (

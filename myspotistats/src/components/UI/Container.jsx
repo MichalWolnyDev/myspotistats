@@ -1,5 +1,5 @@
 
-import styles from './Container.module.scss';
+import styles from '../../assets/scss/UI/Container.module.scss';
 
 const Container = props => {
   return (

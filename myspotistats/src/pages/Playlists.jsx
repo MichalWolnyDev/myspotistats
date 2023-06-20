@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from "../components/UI/Container";
 import { Link, useRouteLoaderData } from "react-router-dom";
 import axios from "axios";
-import styles from './Playlists.module.scss'
+import styles from '../assets/scss/Playlists.module.scss'
 import Loader from "../components/UI/Loader";
 import GoBack from "../components/GoBack";
 import Button from '../components/UI/Button'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import BackArrow from './Svg/BackArrow';
-import styles from './GoBack.module.scss';
+import styles from '../assets/scss/components/GoBack.module.scss';
 
 const GoBack = () => {
     const navigate = useNavigate();

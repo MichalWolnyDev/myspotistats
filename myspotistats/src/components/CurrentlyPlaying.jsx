@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./CurrentlyPlaying.module.scss";
+import styles from "../assets/scss/components/CurrentlyPlaying.module.scss";
 import useAxios from "../hooks/use-axios";
 
 const CurrentlyPlaying = props => {

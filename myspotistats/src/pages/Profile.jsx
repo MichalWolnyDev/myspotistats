@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Profile.module.scss";
+import styles from "../assets/scss/Profile.module.scss";
 import Container from "../components/UI/Container";
 import { useSelector } from "react-redux";
 import GoBack from "../components/GoBack";

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Modal.module.scss";
+import styles from "../../assets/scss/UI/Modal.module.scss";
 import Exit from "../Svg/Exit";
 
 const Modal = (props) => {

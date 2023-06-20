@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useInput from "../hooks/use-input";
 import Checkbox from "./UI/Checkbox";
-import styles from "./Form.module.scss"
+import styles from "../assets/scss/components/Form.module.scss";
 
 const isNotEmpty = (value) => value.trim() !== "";
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Container from "../components/UI/Container";
 import useAxios from "../hooks/use-axios";
 import { useRouteLoaderData } from "react-router-dom";
-import styles from "./Artists.module.scss";
+import styles from "../assets/scss/Artists.module.scss";
 import Listing from "../components/Listing";
 import ListingMenu from "../components/ListingMenu";
 import GoBack from "../components/GoBack";

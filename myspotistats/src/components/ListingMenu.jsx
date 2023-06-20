@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Listing.module.scss';
+import styles from '../assets/scss/components/Listing.module.scss';
 import Button from './UI/Button';
 
 const MENU = [

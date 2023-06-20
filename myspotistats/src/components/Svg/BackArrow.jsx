@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './BackArrow.module.scss'
+import styles from '../../assets/scss/svg/BackArrow.module.scss'
 
 const BackArrow = () => {
     return (

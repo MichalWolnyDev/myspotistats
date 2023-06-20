@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import styles from './Dashboard.module.scss'
+import styles from '../assets/scss/Dashboard.module.scss'
 import Container from '../components/UI/Container'
 import { Link } from 'react-router-dom';
 import Card from '../components/UI/Card';

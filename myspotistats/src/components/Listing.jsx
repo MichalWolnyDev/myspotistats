@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Listing.module.scss";
+import styles from "../assets/scss/components/Listing.module.scss";
 import Button from "./UI/Button";
 import TrackDetails from "./TrackDetails";
 import Loader from "./UI/Loader";

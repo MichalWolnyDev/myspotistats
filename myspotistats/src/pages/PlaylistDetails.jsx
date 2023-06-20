@@ -4,7 +4,7 @@ import { useRouteLoaderData } from "react-router-dom";
 import useAxios from "../hooks/use-axios";
 import Container from "../components/UI/Container";
 import Listing from "../components/Listing";
-import styles from './Playlists.module.scss'
+import styles from '../assets/scss/Playlists.module.scss'
 import GoBack from "../components/GoBack";
 
 const PlaylistDetails = () => {

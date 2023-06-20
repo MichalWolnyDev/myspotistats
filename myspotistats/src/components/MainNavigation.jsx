@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./MainNavigation.module.scss";
+import styles from "../assets/scss/components/MainNavigation.module.scss";
 import Container from "./UI/Container";
 import { Link, useRouteLoaderData } from "react-router-dom";
 import Button from "./UI/Button";
