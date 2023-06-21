@@ -1,9 +1,11 @@
 import React from 'react'
 import Container from '../components/UI/Container'
 import styles from '../assets/scss/Home.module.scss'
+import { getAuthToken } from '../helpers/spotify'
+import Login from '../components/Login'
 
 const Home = () => {
-
+    const token = getAuthToken();
 
     return (
         <Container>
@@ -15,6 +17,7 @@ const Home = () => {
                     <p className={styles.home__subtitle}>
                         All your Spotify statistics in one place.
                     </p>
+                    {!token && <Login />}
                 </div>
             </div>
         </Container>
