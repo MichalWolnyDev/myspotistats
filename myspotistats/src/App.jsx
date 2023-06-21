@@ -14,6 +14,7 @@ const Artists = lazy(() => import("./pages/Artists"));
 const Tracks = lazy(() => import("./pages/Tracks"));
 const Playlists = lazy(() => import("./pages/Playlists"));
 const PlaylistDetails = lazy(() => import("./pages/PlaylistDetails"));
+const Search = lazy(() => import("./pages/Search"));
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,15 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader />}>
             <Tracks />
+          </Suspense>
+        ),
+        loader: chechkAuthLoader,
+      },
+      {
+        path: "search",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Search />
           </Suspense>
         ),
         loader: chechkAuthLoader,

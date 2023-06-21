@@ -57,20 +57,24 @@ const Listing = ({ data, loading, type }) => {
                     ))}
                   <h1 className={styles.listing__name}>{item.name}</h1>
 
-                  {(type == "tracks" || type == "playlist") && (
-                    <div className={styles.listing__cta}>
-                      <div className={styles["listing__cta-row"]}>
-                        <a href={item.external_urls.spotify} target="_blank">
-                          <Button>Listen on Spotify</Button>
-                        </a>
-                      </div>
+                  <div className={styles.listing__cta}>
+                    <div className={styles["listing__cta-row"]}>
+                      <a href={item.external_urls.spotify} target="_blank">
+                        <Button>
+                          {type == "tracks" || type == "playlist"
+                            ? "Listen on Spotify"
+                            : "Check on Spotify"}
+                        </Button>
+                      </a>
+                    </div>
+                    {(type == "tracks" || type == "playlist") && (
                       <div className={styles["listing__cta-row"]}>
                         <Button onClick={() => showDetailsHandler(id)}>
                           {showDetails === id ? "Hide details" : "Show details"}
                         </Button>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
               {showDetails === id && <TrackDetails item={item} />}

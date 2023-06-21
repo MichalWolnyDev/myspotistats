@@ -25,6 +25,10 @@ const dashboardMenu = [
   {
     title: 'Your playlists',
     link: '/playlists'
+  },
+  {
+    title: 'Search',
+    link: '/search'
   }
 ]
 
