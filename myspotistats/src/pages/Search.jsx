@@ -6,6 +6,7 @@ import { debounce } from "lodash";
 import axios from "axios";
 import { getAuthToken } from "../helpers/spotify";
 import ArtistResult from "../components/Search/ArtistResult";
+import ArtistTracks from "../components/Search/ArtistTracks";
 import styles from "../assets/scss/Search.module.scss";
 import Card from "../components/Search/Card";
 
@@ -71,8 +72,11 @@ const Search = () => {
           </div>
           <br />
           <div className={styles.results__wrap}>
-            <Card>
+            <Card className={styles['results__card--sm']}>
               <ArtistResult data={results.data.artists?.items[0]} />
+            </Card>
+            <Card className={styles['results__card']}>
+              <ArtistTracks data={results.data.tracks?.items} />
             </Card>
           </div>
         </div>
