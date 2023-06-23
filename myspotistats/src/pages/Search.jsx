@@ -7,8 +7,10 @@ import axios from "axios";
 import { getAuthToken } from "../helpers/spotify";
 import ArtistResult from "../components/Search/ArtistResult";
 import ArtistTracks from "../components/Search/ArtistTracks";
+import AlbumResult from "../components/Search/AlbumResult";
 import styles from "../assets/scss/Search.module.scss";
 import Card from "../components/Search/Card";
+import { Link } from "react-router-dom";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -62,6 +64,8 @@ const Search = () => {
     console.log(results);
   }
 
+  // const albumsByArtist = results.data.albums.items.map(album => )
+
   return (
     <Container>
       <SearchInput onQueryChange={debouncedChangeHandler} />
@@ -71,13 +75,32 @@ const Search = () => {
             <h1>Best results:</h1>
           </div>
           <br />
-          <div className={styles.results__wrap}>
-            <Card className={styles['results__card--sm']}>
+          <div className={`${styles.results__wrap} ${styles["results__wrap-mobile"]}`}>
+            <Card className={styles["results__card--sm"]}>
               <ArtistResult data={results.data.artists?.items[0]} />
             </Card>
-            <Card className={styles['results__card']}>
+            <Card className={styles["results__card"]}>
               <ArtistTracks data={results.data.tracks?.items} />
             </Card>
+          </div>
+          <br /><br />
+          <h3>Albums:</h3>
+          <br />
+          <div
+            className={`${styles.results__wrap} ${styles["results__wrap-fw"]}`}
+          >
+            {results.data.albums?.items.map((album) => (
+              <Link
+                className={styles["results__card--md"]}
+                to={album.external_urls.spotify}
+                target="_blank"
+                key={album.id}
+              >
+                <Card>
+                  <AlbumResult data={album} />
+                </Card>
+              </Link>
+            ))}
           </div>
         </div>
       )}

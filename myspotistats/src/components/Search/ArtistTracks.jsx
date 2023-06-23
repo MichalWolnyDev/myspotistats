@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../assets/scss/search/ArtistTracks.module.scss";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 import { convertDuration } from "../../helpers/convertTime";
 import Player from "./Player";
 
