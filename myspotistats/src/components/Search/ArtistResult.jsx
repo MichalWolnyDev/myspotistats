@@ -1,6 +1,8 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import styles from "../../assets/scss/search/ArtistResult.module.scss";
+import Button from "../UI/Button";
+import { Link } from "react-router-dom";
 
 const ArtistResult = ({ data }) => {
   console.log(data);
@@ -18,6 +20,12 @@ const ArtistResult = ({ data }) => {
       <p className={styles.result__type}>
         {data.type}
         </p>
+        <br /><br />
+        <Link to={data.external_urls.spotify} target="_blank">
+        <Button>
+          Check on Spotify!
+        </Button>
+        </Link>
     </div>
   );
 };

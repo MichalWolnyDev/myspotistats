@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../assets/scss/search/ArtistTracks.module.scss";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { convertDuration } from "../../helpers/convertTime";
-import PlayButton from "../Svg/PlayButton";
 import Player from "./Player";
 
 const ArtistTracks = ({ data }) => {
   const tracks = data.slice(0, 6);
-
 
   return (
     <div>
@@ -25,10 +23,7 @@ const ArtistTracks = ({ data }) => {
                   src={track.album.images[0]?.url}
                   effect="opacity"
                 />
-                {/* {track.preview_url} */}
-                <Player url={track.preview_url} />
-                {/* <PlayButton /> */}
-                {/* <audio src={track.preview_url} controls/> */}
+                 {track.preview_url && <Player url={track.preview_url} />}
               </div>
               <div className={styles.tracks__details}>
                 <p className={styles.tracks__artist}>
