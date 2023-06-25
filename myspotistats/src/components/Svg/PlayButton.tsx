@@ -1,7 +1,12 @@
-import React from "react";
 import styles from "../../assets/scss/svg/PlayButton.module.scss";
 
-const PlayButton = (props) => {
+interface PlayButton {
+  isPlaying: boolean,
+  onClick: (params: any) => any
+}
+
+
+const PlayButton = (props: PlayButton) => {
   return (
     <>
       {!props.isPlaying ? (

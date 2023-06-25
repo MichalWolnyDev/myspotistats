@@ -51,7 +51,7 @@ const Search = () => {
     }
   }, [query]);
 
-  const queryChangeHandler = (e) => {
+  const queryChangeHandler = (e: any) => {
     setQuery(e.target.value);
   };
 

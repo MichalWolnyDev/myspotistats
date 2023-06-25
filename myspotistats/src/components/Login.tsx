@@ -1,11 +1,17 @@
-import React from 'react'
 import Button from './UI/Button'
 
-const loginButtonHandler = () => {
+interface Login {
+  mode: string
+}
+
+
+const Login = (props: Login) => {
+
+  const loginButtonHandler = () => {
     window.location.href = "http://localhost:8080/login";
   };
 
-const Login = props => {
+
   return (
     <Button onClick={loginButtonHandler} mode={props.mode}>Login with Spotify</Button>
   )

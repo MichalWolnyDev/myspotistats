@@ -1,7 +1,7 @@
-import React from "react";
 import styles from '../../assets/scss/svg/Hamburger.module.scss'
 
-const Hamburger = props => {
+
+const Hamburger = (props: ClickFunction) => {
   return (
     <svg
       width="40px"

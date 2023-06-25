@@ -2,7 +2,11 @@ import React from 'react'
 import useAudio from '../../hooks/use-audio'
 import PlayButton from '../Svg/PlayButton';
 
-const Player = ({url}) => {
+interface Url {
+  url: string
+}
+
+const Player = ({url}: Url) => {
   const [playing, toggle] = useAudio(url);
 
 

@@ -1,7 +1,11 @@
 
 import styles from '../../assets/scss/UI/Container.module.scss';
 
-const Container = props => {
+interface Container {
+  children?: React.ReactNode
+}
+
+const Container = (props: Container) => {
   return (
     <div className={styles.container}>
         {props.children}

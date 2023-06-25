@@ -2,7 +2,13 @@ import React from "react";
 import styles from "../../assets/scss/UI/Modal.module.scss";
 import Exit from "../Svg/Exit";
 
-const Modal = (props) => {
+interface Modal {
+  title: string,
+  children?: React.ReactNode,
+  onCloseModal: (params: any) => any
+}
+
+const Modal = (props: Modal) => {
   return (
     <div className={styles.modal}>
       <div className={styles.modal__content}>

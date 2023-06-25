@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "../../assets/scss/svg/GithubLogo.module.scss";
 
 const GithubLogo = () => {

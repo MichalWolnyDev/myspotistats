@@ -31,7 +31,7 @@ const Tracks = () => {
 
   console.log(items);
 
-  const menuButtonHandler = (param) => {
+  const menuButtonHandler = (param: string) => {
     setTimeRange(param);
     refetch({}); //refetch axios data
   };

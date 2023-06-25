@@ -1,9 +1,16 @@
 import React from "react";
 import styles from "../../assets/scss/UI/Button.module.scss";
 
-console.log(styles);
+interface Button {
+  className?: string,
+  mode?: string,
+  disabled?: boolean,
+  onClick?: (params: any) => any,
+  type?: 'submit' | 'reset' | 'button',
+  children?: React.ReactNode
+}
 
-const Button = (props) => {
+const Button = (props: Button) => {
   return (
     <button
       className={

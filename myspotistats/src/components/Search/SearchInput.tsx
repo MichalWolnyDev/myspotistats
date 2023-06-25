@@ -1,8 +1,10 @@
-import React from "react";
 import styles from "../../assets/scss/components/SearchInput.module.scss";
 
-const SearchInput = (props) => {
+interface SearchInputProps {
+  onQueryChange: (params: any) => any
+}
 
+const SearchInput = (props: SearchInputProps) => {
 
   return (
     <input

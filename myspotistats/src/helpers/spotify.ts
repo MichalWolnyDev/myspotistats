@@ -5,12 +5,12 @@ const getAccessToken = () => {
     const urlParams = new URLSearchParams(queryString);
     const accessToken = urlParams.get('access_token');
     const refreshToken = urlParams.get('refresh_token');
-    const expiration = urlParams.get('expires_in');
+    const expiration = Number(urlParams.get('expires_in'))
     const now = new Date();
 
     accessToken !== null && localStorage.setItem('accessToken', accessToken)
     refreshToken !== null && localStorage.setItem('refreshToken', refreshToken);
-    expiration !== null && localStorage.setItem('expiration', now.getTime() + expiration * 1000);
+    expiration !== null && localStorage.setItem('expiration', String(now.getTime() + expiration * 1000));
 
     return {
         accessToken: accessToken,

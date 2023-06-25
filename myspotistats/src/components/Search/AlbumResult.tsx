@@ -1,9 +1,11 @@
-import React from "react";
 import styles from "../../assets/scss/search/AlbumResult.module.scss";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
-const AlbumResult = ({ data }) => {
+interface Album {
+  name: string,
+}
+const AlbumResult = ({ data }: Album) => {
   return (
     <div className={styles.album}>
       <div className={styles.album__cover}>

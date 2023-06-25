@@ -1,7 +1,11 @@
-import React from 'react'
 import styles from '../../assets/scss/UI/Card.module.scss';
 
-const Card = props => {
+
+interface CardProps {
+  title: string,
+}
+
+const Card = (props: CardProps) => {
   return (
     <div className={styles.card}>
         <div className={styles.card__content}>

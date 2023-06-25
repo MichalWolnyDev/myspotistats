@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "../assets/scss/components/CurrentlyPlaying.module.scss";
 import useAxios from "../hooks/use-axios";
 import { getAuthToken } from "../helpers/spotify";

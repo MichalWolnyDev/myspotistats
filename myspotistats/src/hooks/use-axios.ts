@@ -1,19 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
-const useAxios = axiosParams => {
+const useAxios = (axiosParams: object) => {
     const [response, setResponse] = useState(null);
     const [error, setError] = useState('')
     const [loading, setIsLoading] = useState(true);
     const [shouldRefetch, refetch] = useState({}); 
 
-    const sendRequest = useCallback(async params => {
+    const sendRequest = useCallback(async (params: object) => {
         try {
-            const res = await axios.request(params)
+            const res: object = await axios.request(params)
             setResponse(res);
             
         }
-        catch (err) {
+        catch (err: any) {
             setError(err)
         } finally {
             setIsLoading(false)

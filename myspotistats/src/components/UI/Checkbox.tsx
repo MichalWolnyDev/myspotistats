@@ -1,7 +1,14 @@
 import React from "react";
 import styles from '../../assets/scss/UI/Checkbox.module.scss'
 
-const Checkbox = ({ label, value, onChange, id }) => {
+interface Checkbox {
+  label: string,
+  value: boolean,
+  onChange: (params: any) => any,
+  id: string
+}
+
+const Checkbox = ({ label, value, onChange, id }: Checkbox) => {
   return (
     <>
       <label htmlFor={id} className={styles.checkbox}>
