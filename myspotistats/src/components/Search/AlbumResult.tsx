@@ -6,7 +6,7 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 
 const AlbumResult = (props: SearchResult) => {
   return (
-    <div className={styles.album}>
+    <div className={styles.album} title={props.data.name}>
       <div className={styles.album__cover}>
         <LazyLoadImage
           alt={props.data.name}
@@ -14,7 +14,7 @@ const AlbumResult = (props: SearchResult) => {
           effect="opacity"
         />
       </div>
-      <h4>
+      <h4 className={styles.album__title}>
         {props.data.name}
       </h4>
       <p>
