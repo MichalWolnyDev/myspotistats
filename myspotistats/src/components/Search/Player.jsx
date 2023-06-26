@@ -1,11 +1,8 @@
 import useAudio from '../../hooks/use-audio'
 import PlayButton from '../Svg/PlayButton';
 
-interface Url {
-  url: string
-}
 
-const Player = ({url}: Url) => {
+const Player = ({url}) => {
   const [playing, toggle] = useAudio(url);
 
 

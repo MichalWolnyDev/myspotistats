@@ -1,22 +1,17 @@
 import styles from "../../assets/scss/svg/PlayButton.module.scss";
 
-interface PlayButton {
-  onClick: boolean | (() => void)
-  isPlaying: boolean | (() => void)
-}
 
-
-const PlayButton = (props: PlayButton) => {
+const PlayButton = ({onClick, isPlaying}) => {
   return (
     <>
-      {!props.isPlaying ? (
+      {!isPlaying ? (
         <svg
           width="40px"
           height="40px"
           viewBox="0 0 40 40"
           version="1.1"
           className={styles.play}
-          onClick={() => props.onClick}
+          onClick={onClick}
         >
           <g id="surface1">
             <path
@@ -32,7 +27,7 @@ const PlayButton = (props: PlayButton) => {
           viewBox="0 0 40 40"
           version="1.1"
           className={styles.stop}
-          onClick={() => props.onClick}
+          onClick={onClick}
         >
           <g id="surface1">
             <path

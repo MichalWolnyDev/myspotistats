@@ -33,7 +33,7 @@ const ArtistTracks = (props: SearchResult) => {
               </div>
               <div className={styles.tracks__duration}>
                 <p className={styles["tracks__duration-value"]}>
-                  {convertDuration(track.duration_ms)}
+                  {convertDuration(track.duration_ms!)}
                 </p>
               </div>
             </div>

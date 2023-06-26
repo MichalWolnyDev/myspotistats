@@ -2,15 +2,15 @@ export {};
 
 declare global {
     interface ClickFunction {
-        onClick: (params: any) => any
+        onClick?: (params: any) => void
     }
     interface SearchResult {
-        duration_ms: number;
-        name: string | undefined;
-        album: any;
-        preview_url: any;
-        artists: any;
-        id: Key | null | undefined;
+        duration_ms?: number;
+        name?: string | undefined;
+        album?: any;
+        preview_url?: any;
+        artists?: any;
+        id?: Key | null | undefined;
         data: {
             [x: string]: any,
             name?: string,
