@@ -11,6 +11,7 @@ import AlbumResult from "../components/Search/AlbumResult";
 import styles from "../assets/scss/Search.module.scss";
 import Card from "../components/Search/Card";
 import { Link } from "react-router-dom";
+import GoBack from "../components/GoBack";
 
 interface Album {
   external_urls: {
@@ -75,6 +76,8 @@ const Search = () => {
 
   return (
     <Container>
+       <GoBack />
+       <br />
       <SearchInput onQueryChange={debouncedChangeHandler} />
       {results && (
         <div className={styles.results}>
