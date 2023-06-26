@@ -1,7 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialProfileState = {
-    profile: {}
+export interface IssueInitialState {
+    profile: {
+        display_name: string,
+        images?: Array<Images>,
+        id: string,
+        followers: {
+            total: number
+        },
+        product: string
+    }
+}
+
+const initialProfileState: IssueInitialState = {
+    profile: {
+        display_name: '',
+        images: [],
+        id: '',
+        followers: {
+            total: 0
+        },
+        product: ''
+    }
 };
 
 const profileSlice = createSlice({

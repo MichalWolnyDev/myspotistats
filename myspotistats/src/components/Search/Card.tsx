@@ -2,7 +2,7 @@ import styles from '../../assets/scss/search/Card.module.scss'
 
 
 interface CardProps {
-  className: string,
+  className?: string,
   children?: React.ReactNode
 }
 

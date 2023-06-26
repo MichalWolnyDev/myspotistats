@@ -6,9 +6,16 @@ import Button from "./UI/Button";
 import axios from "axios";
 import { getAuthToken } from "../helpers/spotify";
 
-const isNotEmpty = (value) => value.trim() !== "";
+interface Playlist {
+  name: string,
+  description: string,
+  public: boolean,
+  userId?: string
+}
 
-const sendPlaylist = async (formData) => {
+const isNotEmpty = (value: string) => value.trim() !== "";
+
+const sendPlaylist = async (formData: Playlist) => {
   const token = getAuthToken();
 
   const response = await axios
@@ -65,7 +72,7 @@ const CreatePlaylistForm = () => {
     formIsValid = true;
   }
 
-  const formSubmission = (e) => {
+  const formSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formIsValid) {
@@ -76,7 +83,7 @@ const CreatePlaylistForm = () => {
       name: enteredName,
       description: enteredDescription,
       public: checkboxChecked,
-      userId: userId,
+      userId: userId!, // non-null asertion with !
     }).then((res)=> {
       setIsPlaylistAdded(true)
     });

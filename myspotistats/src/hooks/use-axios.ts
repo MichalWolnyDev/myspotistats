@@ -1,15 +1,27 @@
 import { useCallback, useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
-const useAxios = (axiosParams: object) => {
-    const [response, setResponse] = useState(null);
+interface Params {
+    method: string,
+    url: string,
+    params?: {
+        time_range: string
+    },
+    headers: {
+        Authorization: string
+    }
+    
+}
+
+const useAxios = (axiosParams: Params) => {
+    const [response, setResponse] = useState<AxiosResponse | null>(null);
     const [error, setError] = useState('')
     const [loading, setIsLoading] = useState(true);
     const [shouldRefetch, refetch] = useState({}); 
 
-    const sendRequest = useCallback(async (params: object) => {
+    const sendRequest = useCallback(async (params: Params) => {
         try {
-            const res: object = await axios.request(params)
+            const res = await axios.request(params)
             setResponse(res);
             
         }

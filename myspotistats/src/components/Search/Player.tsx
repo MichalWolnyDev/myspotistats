@@ -1,4 +1,3 @@
-import React from 'react'
 import useAudio from '../../hooks/use-audio'
 import PlayButton from '../Svg/PlayButton';
 

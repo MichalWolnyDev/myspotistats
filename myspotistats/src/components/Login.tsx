@@ -1,7 +1,7 @@
 import Button from './UI/Button'
 
 interface Login {
-  mode: string
+  mode?: string
 }
 
 

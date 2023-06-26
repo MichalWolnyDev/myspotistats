@@ -3,7 +3,7 @@ import Container from "../components/UI/Container";
 import Loader from "../components/UI/Loader";
 import SearchInput from "../components/Search/SearchInput";
 import { debounce } from "lodash";
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import { getAuthToken } from "../helpers/spotify";
 import ArtistResult from "../components/Search/ArtistResult";
 import ArtistTracks from "../components/Search/ArtistTracks";
@@ -12,9 +12,16 @@ import styles from "../assets/scss/Search.module.scss";
 import Card from "../components/Search/Card";
 import { Link } from "react-router-dom";
 
+interface Album {
+  external_urls: {
+    spotify: string
+  },
+  id: string
+}
+
 const Search = () => {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<AxiosResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const token = getAuthToken();
   const mounted = useRef(false);
@@ -89,7 +96,7 @@ const Search = () => {
           <div
             className={`${styles.results__wrap} ${styles["results__wrap-fw"]}`}
           >
-            {results.data.albums?.items.map((album) => (
+            {results.data.albums?.items.map((album: Album) => (
               <Link
                 className={styles["results__card--md"]}
                 to={album.external_urls.spotify}

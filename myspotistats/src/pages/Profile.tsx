@@ -3,11 +3,12 @@ import styles from "../assets/scss/Profile.module.scss";
 import Container from "../components/UI/Container";
 import { useSelector } from "react-redux";
 import GoBack from "../components/GoBack";
+import { RootState } from "../store";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
 const Profile = () => {
-  const user = useSelector((state) => state.profile.profile);
+  const user = useSelector((state: RootState) => state.profile.profile);
 
   return (
     <Container>
@@ -21,7 +22,7 @@ const Profile = () => {
           </div>
           <div className={styles.profile__avatar}>
             <LazyLoadImage
-              src={user.images[0].url}
+              src={user.images![0].url}
               alt={user.id}
               effect="opacity"
             />

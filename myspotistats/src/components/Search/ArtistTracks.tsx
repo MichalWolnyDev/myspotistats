@@ -4,15 +4,15 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 import { convertDuration } from "../../helpers/convertTime";
 import Player from "./Player";
 
-const ArtistTracks = ({ data }) => {
-  const tracks = data.slice(0, 6);
+const ArtistTracks = (props: SearchResult) => {
+  const tracks = props.data.slice(0, 6);
 
   return (
     <div>
       <h3>Tracks:</h3>
       <br />
       <ul>
-        {tracks.map((track) => (
+        {tracks.map((track: SearchResult) => (
           <li key={track.id}>
             <div
               className={styles.tracks__row}

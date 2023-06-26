@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../assets/scss/components/Listing.module.scss';
 import Button from './UI/Button';
 
@@ -17,8 +16,12 @@ const MENU = [
     },
 ];
 
+interface ListingMenu {
+    menuButtonHandler: (params: any) => any,
+    timeRange: string
+}
 
-const ListingMenu = ({ menuButtonHandler, timeRange }) => {
+const ListingMenu = ({ menuButtonHandler, timeRange }: ListingMenu) => {
     return (
         <div className={styles.listing__menu}>
             {MENU?.map((item, id) => (

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "../assets/scss/Mobilemenu.module.scss";
 import { Link } from "react-router-dom";
 import { getAuthToken } from "../helpers/spotify";

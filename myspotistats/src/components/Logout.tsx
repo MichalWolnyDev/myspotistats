@@ -1,7 +1,6 @@
-import React from "react";
 import Button from "./UI/Button";
 
-const logoutButtonHandler = (e) => {
+const logoutButtonHandler = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
@@ -10,7 +9,11 @@ const logoutButtonHandler = (e) => {
   window.location.href = "/";
 };
 
-const Logout = props => {
+interface Logout {
+  mode?: string
+}
+
+const Logout = (props: Logout) => {
   return <Button onClick={logoutButtonHandler} mode={props?.mode || ""}>Logout</Button>;
 };
 

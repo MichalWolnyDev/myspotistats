@@ -4,7 +4,22 @@ import Button from "./UI/Button";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
-const TrackDetails = ({ item }) => {
+interface TrackDetails {
+  album: {
+    external_urls: {
+      spotify: string
+    },
+    images: Array<Images>,
+    name: string,
+    release_date: string,
+    total_tracks: number
+  },
+  artists: Array<Artists>,
+  preview_url: string,
+
+}
+
+const TrackDetails = ({ item }: {item: TrackDetails}) => {
   console.log(item);
   return (
     <div className={styles.details}>

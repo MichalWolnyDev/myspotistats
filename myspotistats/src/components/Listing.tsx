@@ -6,10 +6,12 @@ import Loader from "./UI/Loader";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
-const Listing = ({ data, loading, type }) => {
+
+
+const Listing = ({ data, loading, type }: {data: any, loading: boolean, type: string}) => {
   const [showDetails, setShowDetails] = useState(null);
 
-  const showDetailsHandler = (index) => {
+  const showDetailsHandler = (index: number) => {
     setShowDetails((prev) => {
       return prev === index ? null : index;
     });
@@ -18,7 +20,7 @@ const Listing = ({ data, loading, type }) => {
   let playListData = [];
 
   if (type == "playlist") {
-    playListData = data?.map((item) => item.track);
+    playListData = data?.map((item: any) => item.track);
     data = playListData;
   }
 
@@ -28,7 +30,7 @@ const Listing = ({ data, loading, type }) => {
         {loading && <Loader />}
         {!loading &&
           data &&
-          data.map((item, id) => (
+          data.map((item:any, id: string) => (
             <div key={id} className={styles.listing__item}>
               <div className={styles.listing__row}>
                 <div className={styles.listing__number}>
@@ -53,7 +55,7 @@ const Listing = ({ data, loading, type }) => {
                 <div className={styles.listing__details}>
                   {type == "tracks" ||
                     (type == "playlist" && (
-                      <p>{item.artists.map((artist) => artist.name + " ")}</p>
+                      <p>{item.artists.map((artist: any) => artist.name + " ")}</p>
                     ))}
                   <h1 className={styles.listing__name}>{item.name}</h1>
 
